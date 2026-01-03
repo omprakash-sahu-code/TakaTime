@@ -4,7 +4,7 @@ local config = require("taka-time.config")
 -- Helper: Get path to the Go binary
 function M.get_binary_path()
 	local plugin_root = vim.fn.fnamemodify(debug.getinfo(1).source:sub(2), ":h:h:h")
-	return plugin_root .. "/cmd/taka-cli"
+	return plugin_root .. "/taka-upload"
 end
 
 -- Helper: Detect OS and Architecture
@@ -50,7 +50,7 @@ function M.ensure_binary()
 	-- In lua/taka-time/utils.lua
 	local version = config.options.binary_version
 	local url = string.format(
-		"https://github.com/Rtarun3606k/TakaTime/releases/download/%s/taka-cli-%s-%s",
+		"https://github.com/Rtarun3606k/TakaTime/releases/download/%s/taka-upload-%s-%s",
 		version,
 		os_name,
 		arch
