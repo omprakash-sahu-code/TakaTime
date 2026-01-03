@@ -8,19 +8,30 @@ jobs:
   build-linux:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Set up Go
-      uses: actions/setup-go@v4
-      with:
-        go-version: '1.21'
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.21"
 
-    - name: Build Linux Binary
-      run: |
-        # Build specifically for Linux AMD64
-        env GOOS=linux GOARCH=amd64 go build -o taka-cli-linux-amd64 cmd/main.go
+      - name: Download Dependencies
+        run: |
+          # Ensure we are in the root where main.go is (or init if missing)
+          if [ ! -f go.mod ]; then
+            go mod init github.com/Rtarun3606k/TakaTime
+          fi
+          # Download the missing mongo drivers
+          go get go.mongodb.org/mongo-driver/mongo
+          go get go.mongodb.org/mongo-driver/bson
+          go mod tidy
 
-    - name: Upload to Release
-      uses: softprops/action-gh-release@v1
-      with:
-        files: taka-cli-linux-amd64
+      - name: Build Linux Binary
+        run: |
+          # Build specifically for Linux AMD64
+          env GOOS=linux GOARCH=amd64 go build -o taka-cli-linux-amd64 cmd/main.go
+
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: taka-cli-linux-amd64
