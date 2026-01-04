@@ -1,69 +1,78 @@
 local M = {}
 local config = require("taka-time.config")
 
--- Helper: Get path to the Go binary
 function M.get_binary_path()
-	local plugin_root = vim.fn.fnamemodify(debug.getinfo(1).source:sub(2), ":h:h:h")
-	return plugin_root .. "/taka-upload"
+    local plugin_root = vim.fn.fnamemodify(debug.getinfo(1).source:sub(2), ":h:h:h")
+    return plugin_root .. "/taka-upload"
 end
 
--- Helper: Detect OS and Architecture
+function M.get_version_file_path()
+    local plugin_root = vim.fn.fnamemodify(debug.getinfo(1).source:sub(2), ":h:h:h")
+    return plugin_root .. "/.version"
+end
+
+-- Helper: Read version from disk
+function M.get_installed_version()
+    local f = io.open(M.get_version_file_path(), "r")
+    if not f then return nil end
+    local v = f:read("*all")
+    f:close()
+    return v:gsub("%s+", "") -- trim whitespace
+end
+
+-- Helper: Write version to disk
+function M.write_installed_version(v)
+    local f = io.open(M.get_version_file_path(), "w")
+    if f then f:write(v); f:close() end
+end
+
+-- Helper: Detect OS/Arch
 local function get_os_info()
-	local uname = vim.loop.os_uname()
-	local os_name = uname.sysname:lower()
-	local arch = uname.machine:lower()
-
-	if os_name == "linux" then
-		os_name = "linux"
-	elseif os_name == "darwin" then
-		os_name = "darwin"
-	else
-		return nil, nil
-	end -- Windows requires extra logic later
-
-	if arch == "x86_64" then
-		arch = "amd64"
-	end
-	-- arm64 usually stays arm64, but sometimes aarch64
-	if arch == "aarch64" then
-		arch = "arm64"
-	end
-
-	return os_name, arch
+    local uname = vim.loop.os_uname()
+    local os = uname.sysname:lower()
+    local arch = uname.machine:lower()
+    if os == "linux" then os = "linux" elseif os == "darwin" then os = "darwin" else return nil, nil end
+    if arch == "x86_64" then arch = "amd64" end
+    if arch == "aarch64" then arch = "arm64" end
+    return os, arch
 end
 
--- Public: Check if binary exists, if not, download it
 function M.ensure_binary()
-	local bin_path = M.get_binary_path()
+    local bin_path = M.get_binary_path()
+    local target_ver = config.options.binary_version
+    local current_ver = M.get_installed_version()
 
-	-- If file exists, we are good
-	if vim.fn.filereadable(bin_path) == 1 then
-		return
-	end
+    -- 1. Check if we are already up to date
+    if vim.fn.filereadable(bin_path) == 1 and current_ver == target_ver then
+        return
+    end
 
-	local os_name, arch = get_os_info()
-	if not os_name then
-		print("[Taka] Auto-install not supported for this OS. Please build manually.")
-		return
-	end
+    -- 2. Update logic
+    if current_ver and current_ver ~= target_ver then
+        print(string.format("[Taka] Updating %s -> %s...", current_ver, target_ver))
+    end
 
-	-- In lua/taka-time/utils.lua
-	local version = config.options.binary_version
-	local url = string.format(
-		"https://github.com/Rtarun3606k/TakaTime/releases/download/%s/taka-upload-%s-%s",
-		version,
-		os_name,
-		arch
-	)
+    local os_name, arch = get_os_info()
+    if not os_name then
+        print("[Taka] Auto-install not supported for this OS.")
+        return
+    end
 
-	print("[Taka] Installing binary (" .. version .. ")...")
+    local url = string.format(
+        "https://github.com/Rtarun3606k/TakaTime/releases/download/%s/taka-upload-%s-%s",
+        target_ver, os_name, arch
+    )
 
-	-- Download
-	vim.fn.system({ "curl", "-L", "-o", bin_path, url })
-	-- Make executable
-	vim.fn.system({ "chmod", "+x", bin_path })
+    -- 3. Delete old binary and download new one
+    if vim.fn.filereadable(bin_path) == 1 then os.remove(bin_path) end
 
-	print("[Taka] Installation complete.")
+    print("[Taka] Downloading " .. target_ver .. "...")
+    vim.fn.system({ "curl", "-L", "-o", bin_path, url })
+    vim.fn.system({ "chmod", "+x", bin_path })
+
+    -- 4. Update version file
+    M.write_installed_version(target_ver)
+    print("[Taka] Successfully installed " .. target_ver)
 end
 
 return M

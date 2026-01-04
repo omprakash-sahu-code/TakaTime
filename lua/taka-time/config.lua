@@ -1,18 +1,19 @@
 local M = {}
 
--- Default settings
 M.defaults = {
-  mongo_uri = "",
-  debug = false,
-  debounce_seconds = 2,
-  binary_version = "v1.0.5", -- Bump this when you release new Go versions!
+	binary_version = "v2.0.2-beta",
+
+	mongo_uri = "",
+
+	debounce_seconds = 2,
+
+	debug = false,
 }
 
--- Active configuration (starts as defaults)
-M.options = vim.deepcopy(M.defaults)
+M.options = {}
 
-function M.setup(user_opts)
-  M.options = vim.tbl_deep_extend("force", M.defaults, user_opts or {})
+function M.setup(options)
+	M.options = vim.tbl_deep_extend("force", M.defaults, options or {})
 end
 
 return M

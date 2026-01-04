@@ -1,24 +1,50 @@
--- init.lua ok my firat plugin
--- redir > nvim_logs.txt | silent messages | redir END
--- lua/taka-time/init.lua
 local M = {}
 local config = require("taka-time.config")
 local utils = require("taka-time.utils")
 local core = require("taka-time.core")
+local storage = require("taka-time.storage")
 
 function M.setup(opts)
 	-- 1. Setup Config
 	config.setup(opts)
 
-	-- 2. Ensure Binary Exists (Download if needed)
-	-- We run this in a pcall to prevent crashing if internet is down
+	-- 2. AUTOMATICALLY LOAD SECRET (Crucial Step!)
+	-- If user didn't provide URI in config, try to load from storage
+	if config.options.mongo_uri == "" then
+		local saved_uri = storage.load_secret()
+		if saved_uri then
+			config.options.mongo_uri = saved_uri
+		end
+	end
+
+	-- 3. Create Commands
+	vim.api.nvim_create_user_command("TakaInit", function()
+		-- Use inputsecret to hide characters (******)
+		local uri = vim.fn.inputsecret("Enter your Mongo URI: ")
+		if uri and uri ~= "" then
+			storage.save_secret(uri)
+			config.options.mongo_uri = uri -- Update runtime config immediately
+		else
+			print("❌ TakaTime: No URI Entered")
+		end
+	end, {})
+
+	vim.api.nvim_create_user_command("TakaStatus", function()
+		if config.options.mongo_uri and config.options.mongo_uri ~= "" then
+			print("✅ TakaTime is configured and running.")
+		else
+			print("⚠️ TakaTime is NOT configured. Run :TakaInit")
+		end
+	end, {})
+
+	-- 4. Start Timer
+	core.start_timer()
+
+	-- 5. Ensure Binary Exists (Download if needed)
+	-- Using pcall ensures we don't crash if internet is down
 	pcall(utils.ensure_binary)
 
-	-- 3. Reset Timer
-	-- Accessing a private state variable isn't ideal, but for v1 it's fine.
-	-- Ideally 'core' would expose a reset function.
-
-	-- 4. Setup Autocommands
+	-- 6. Setup Autocommands
 	local group = vim.api.nvim_create_augroup("TakaTimeGroup", { clear = true })
 
 	vim.api.nvim_create_autocmd("BufWritePost", {
