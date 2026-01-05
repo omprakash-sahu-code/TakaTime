@@ -35,51 +35,62 @@ return {
   end,
 }
 ```
-----
+
+---
+
 ## ⚙️ Setup Guide
+
 Step 1: Get a Database
 
 You need a MongoDB connection string. You have two free options:
- -  Cloud (Recommended): Create a free account on MongoDB Atlas. Create a free cluster and get your connection string (e.g., mongodb+srv://user:pass@cluster...).
- -  Local (Docker): Run docker run -d -p 27017:27017 mongo.
+
+- Cloud (Recommended): Create a free account on MongoDB Atlas. Create a free cluster and get your connection string (e.g., mongodb+srv://user:pass@cluster...).
+- Local (Docker): Run docker run -d -p 27017:27017 mongo.
 
 Step 2: Initialize the Plugin
 
-   Open Neovim.
+Open Neovim.
 
-   Run the setup command:
-    Vim Script
+Run the setup command:
+Vim Script
+
 ```nvim
 :TakaInit
 ```
-   Paste your MongoDB Connection String when prompted. (This is saved securely in your local data folder, ~/.local/share/nvim/taka_data.json).
+
+Paste your MongoDB Connection String when prompted. (This is saved securely in your local data folder, ~/.local/share/nvim/taka_data.json).
 
 Step 3: Verify
 
 Run the status command to check if everything is working:
 Vim Script
+
 ```nvim
 :TakaStatus
 ```
+
 If it says "✅ TakaTime is configured and running," you are good to go!
 
-----
+---
 
 ## 📊 How to Add Stats to Your GitHub Profile
 
 TakaTime comes with a report generator that works with GitHub Actions to update your Profile README automatically.
+
 1. Prepare your Profile Repo
 
-    Go to your GitHub Profile Repository (the one named username/username).
+   Go to your GitHub Profile Repository (the one named username/username).
 
-    Go to Settings > Secrets and variables > Actions.
+   Go to Settings > Secrets and variables > Actions.
 
-    Add a New Repository Secret named MONGO_URI with your connection string.
+   Add a New Repository Secret named MONGO_URI with your connection string.
 
-    (Optional) Add ` GIST_TOKEN ` if you plan to use Gists (not required for direct README updates).
+   (Optional) Add `GIST_TOKEN` if you plan to use Gists (not required for direct README updates).
 
 2. Add the Markers
-- Add start and end markers to your README.md 
+
+- Add start and end markers to your README.md
+
 ```md
 <!--takatime-start-->
 <!--takatime-end-->
@@ -88,13 +99,14 @@ TakaTime comes with a report generator that works with GitHub Actions to update 
 3. Create the Workflow
 
 Create a file in your repo at .github/workflows/update-stats.yml and paste this content:
+
 ```yml
 name: Update TakaTime Stats
 
 on:
   schedule:
     - cron: "0 0 * * *" # Runs every midnight UTC
-  workflow_dispatch:      # Allows manual trigger
+  workflow_dispatch: # Allows manual trigger
 
 jobs:
   update-readme:
@@ -115,12 +127,12 @@ jobs:
           MONGO_URI: ${{ secrets.MONGO_URI }}
           TARGET_REPO: "${{ github.repository }}" # Automatically targets this repo
         run: ./taka-report -days=7
-
 ```
 
 `Note:` This workflow downloads the taka-report tool and runs it against your database to generate stats.
 
-----
+---
+
 ## 🛠️ Troubleshooting
 
 "TakaTime is not configured"
@@ -131,18 +143,21 @@ jobs:
 
 Upload Failed / Syncing Forever
 
-   Enable debug mode in your config:
+Enable debug mode in your config:
+
 ```Lua
 
    require("taka-time").setup({ debug = true })
 ```
- Run :messages in Neovim to see the logs.
 
- Ensure your IP address is whitelisted in MongoDB Atlas.
+Run :messages in Neovim to see the logs.
 
- For Changes Look for `CHANGELOG.md`
+Ensure your IP address is whitelisted in MongoDB Atlas.
 
-----
+For Changes Look for `CHANGELOG.md`
+
+---
+
 ## ⚠️ Disclaimer & Roadmap
 
 `Active Beta`: This project is currently in active development. We might introduce breaking changes in future updates as we refine the architecture. Use at your own risk.
@@ -153,12 +168,11 @@ Upload Failed / Syncing Forever
 
 New screenshots and visual updates will be added soon!
 
-----
+---
 
 ## 📄 License
 
 MIT License. See `LICENSE` for details.
-
 
 <!--takatime-start-->
 <!--takatime-end-->

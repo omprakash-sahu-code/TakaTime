@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 
+	dbqueryv2 "github.com/Rtarun3606k/TakaTime/internal/DBQueryV2"
 	dbquery "github.com/Rtarun3606k/TakaTime/internal/DBquery"
 	gogist "github.com/Rtarun3606k/TakaTime/internal/GoGist"
 	"github.com/Rtarun3606k/TakaTime/internal/db"
@@ -45,7 +46,8 @@ func main() {
 		return
 	}
 
-	content := dbquery.GenerateReport(logs)
+	// content := dbquery.GenerateReport(logs)
+	content := dbqueryv2.GenerateOutput(client)
 	log.Println(content)
 
 	if gistToken != "" && targetRepo != "" {

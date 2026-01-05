@@ -64,7 +64,8 @@ func UpdateReadMe(githubToken string, repoName string, content string) error {
 		return err
 	}
 
-	newBlock := fmt.Sprintf("%s\n```text\n%s\n```\n%s", startMarker, content, endMarker)
+	// newBlock := fmt.Sprintf("%s\n```text\n%s\n```\n%s", startMarker, content, endMarker)
+	newBlock := fmt.Sprintf("%s\n\n%s\n\n%s", startMarker, content, endMarker)
 
 	// Regex to replace existing block (dot matches newline with (?s))
 	re := regexp.MustCompile(fmt.Sprintf(`(?s)%s.*?%s`, regexp.QuoteMeta(startMarker), regexp.QuoteMeta(endMarker)))
