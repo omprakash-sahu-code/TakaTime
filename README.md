@@ -96,7 +96,7 @@ TakaTime comes with a report generator that works with GitHub Actions to update 
 
 > [!NOTE]
 > **TakaTime Dashboard**
-> _Jan 02_ to _Jan 09_
+> _Jan 03_ to _Jan 10_
 
 > [!TIP]
 > **Total Coding Time (7d):** 4h 18m
@@ -211,7 +211,7 @@ MIT License. See `LICENSE` for details.
 
 > [!NOTE]
 > **TakaTime Dashboard**
-> _Jan 02_ to _Jan 09_
+> _Jan 03_ to _Jan 10_
 
 > [!TIP]
 > **Total Coding Time (7d):** 4h 18m
