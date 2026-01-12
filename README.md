@@ -93,6 +93,39 @@ TakaTime comes with a report generator that works with GitHub Actions to update 
 
 ```md
 <!--takatime-start-->
+
+> [!NOTE]
+> **TakaTime Dashboard**
+> _Jan 05_ to _Jan 12_
+
+> [!TIP]
+> **Total Coding Time (7d):** 4h 14m
+
+#### 📈 Trends
+| Period        | Duration    | Period       | Duration    |
+| :---          | :---        | :---         | :---        |
+| Yesterday     | **0m**      | Last 7 Days  | **4h 14m**  |
+| Last 30 Days  | **4h 18m**  | All Time     | **4h 18m**  |
+
+#### 💻 Languages
+| Language | Time | Percentage |
+| :--- | :--- | :--- |
+| **go** | 1h 39m | 🟦🟦🟦⬜⬜⬜⬜⬜⬜⬜ 39.2% |
+| **lua** | 1h 2m | 🟦🟦⬜⬜⬜⬜⬜⬜⬜⬜ 24.7% |
+| **txt** | 41m | 🟦⬜⬜⬜⬜⬜⬜⬜⬜⬜ 16.2% |
+| **text** | 27m | 🟦⬜⬜⬜⬜⬜⬜⬜⬜⬜ 10.6% |
+| **Other** | 23m | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ 9.2% |
+
+#### 🔥 Projects
+| Project | Time | Percentage |
+| :--- | :--- | :--- |
+| **taka-time.nvim** | 2h 32m | 🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜ 60.0% |
+| **testTakaTime** | 41m | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ 16.2% |
+| **nvim** | 24m | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ 9.8% |
+| **vscodePlugin** | 23m | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ 9.2% |
+| **Other** | 12m | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ 4.8% |
+
+
 <!--takatime-end-->
 ```
 
@@ -125,7 +158,7 @@ jobs:
       - name: Generate Report & Update Profile
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
-          TARGET_REPO: "${{ github.repository }}" # Automatically targets this repo
+          TARGET_REPO: ${{ github.repository }} # Automatically targets this repo
         run: ./taka-report -days=7
 ```
 
@@ -175,4 +208,37 @@ New screenshots and visual updates will be added soon!
 MIT License. See `LICENSE` for details.
 
 <!--takatime-start-->
+
+> [!NOTE]
+> **TakaTime Dashboard**
+> _Jan 05_ to _Jan 12_
+
+> [!TIP]
+> **Total Coding Time (7d):** 4h 14m
+
+#### 📈 Trends
+| Period        | Duration    | Period       | Duration    |
+| :---          | :---        | :---         | :---        |
+| Yesterday     | **0m**      | Last 7 Days  | **4h 14m**  |
+| Last 30 Days  | **4h 18m**  | All Time     | **4h 18m**  |
+
+#### 💻 Languages
+| Language | Time | Percentage |
+| :--- | :--- | :--- |
+| **go** | 1h 39m | 🟦🟦🟦⬜⬜⬜⬜⬜⬜⬜ 39.2% |
+| **lua** | 1h 2m | 🟦🟦⬜⬜⬜⬜⬜⬜⬜⬜ 24.7% |
+| **txt** | 41m | 🟦⬜⬜⬜⬜⬜⬜⬜⬜⬜ 16.2% |
+| **text** | 27m | 🟦⬜⬜⬜⬜⬜⬜⬜⬜⬜ 10.6% |
+| **Other** | 23m | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ 9.2% |
+
+#### 🔥 Projects
+| Project | Time | Percentage |
+| :--- | :--- | :--- |
+| **taka-time.nvim** | 2h 32m | 🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜ 60.0% |
+| **testTakaTime** | 41m | 🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ 16.2% |
+| **nvim** | 24m | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ 9.8% |
+| **vscodePlugin** | 23m | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ 9.2% |
+| **Other** | 12m | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ 4.8% |
+
+
 <!--takatime-end-->

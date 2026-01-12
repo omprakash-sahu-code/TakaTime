@@ -20,11 +20,13 @@ jobs:
         run: go mod download
 
       # --- BUILD TAKA-UPLOAD (For Lua Plugin) ---
+# --- BUILD TAKA-UPLOAD (For VS Code & Lua Plugin) ---
       - name: Build Taka-Upload
         run: |
           env GOOS=linux GOARCH=amd64 go build -o taka-upload-linux-amd64 cmd/upload/main.go
           env GOOS=darwin GOARCH=amd64 go build -o taka-upload-darwin-amd64 cmd/upload/main.go
           env GOOS=darwin GOARCH=arm64 go build -o taka-upload-darwin-arm64 cmd/upload/main.go
+          env GOOS=windows GOARCH=amd64 go build -o taka-upload-windows-amd64.exe cmd/upload/main.go
 
       # --- BUILD TAKA-REPORT (For Stats Generation) ---
       - name: Build Taka-Report
@@ -32,6 +34,7 @@ jobs:
           env GOOS=linux GOARCH=amd64 go build -o taka-report-linux-amd64 cmd/report/main.go
           env GOOS=darwin GOARCH=amd64 go build -o taka-report-darwin-amd64 cmd/report/main.go
           env GOOS=darwin GOARCH=arm64 go build -o taka-report-darwin-arm64 cmd/report/main.go
+          env GOOS=windows GOARCH=amd64 go build -o taka-report-windows-amd64.exe cmd/report/main.go
 
       # --- UPLOAD EVERYTHING ---
       - name: Upload to Release
@@ -41,6 +44,8 @@ jobs:
             taka-upload-linux-amd64
             taka-upload-darwin-amd64
             taka-upload-darwin-arm64
+            taka-upload-windows-amd64.exe
             taka-report-linux-amd64
             taka-report-darwin-amd64
             taka-report-darwin-arm64
+            taka-report-windows-amd64.exe
