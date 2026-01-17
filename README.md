@@ -43,7 +43,8 @@ return {
 Step 1: Get a Database
 
 You need a MongoDB connection string. You have two free options:
-
+- add all ip access
+- <img width="986" height="752" alt="image" src="https://github.com/user-attachments/assets/d9433977-e841-4e0d-a1d2-9847901501d6" />
 - Cloud (Recommended): Create a free account on MongoDB Atlas. Create a free cluster and get your connection string (e.g., mongodb+srv://user:pass@cluster...).
 - Local (Docker): Run docker run -d -p 27017:27017 mongo.
 
