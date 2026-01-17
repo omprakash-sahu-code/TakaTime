@@ -96,28 +96,27 @@ TakaTime comes with a report generator that works with GitHub Actions to update 
 
 > [!NOTE]
 > **TakaTime Dashboard**
-> _Jan 07_ to _Jan 14_
+> _Jan 10_ to _Jan 17_
 
 > [!TIP]
-> **Total Coding Time (7d):** 0h 35m
+> **Total Coding Time (7d):** 0h 4m
 
 #### 📈 Trends
 | Period        | Duration    | Period       | Duration    |
 | :---          | :---        | :---         | :---        |
-| Yesterday     | **0m**      | Last 7 Days  | **35m**     |
-| Last 30 Days  | **4h 18m**  | All Time     | **4h 18m**  |
+| Yesterday     | **4m**      | Last 7 Days  | **4m**      |
+| Last 30 Days  | **4h 22m**  | All Time     | **4h 22m**  |
 
 #### 💻 Languages
 | Language | Time | Percentage |
 | :--- | :--- | :--- |
-| **js** | 23m | 🟦🟦🟦🟦🟦🟦⬜⬜⬜⬜ 66.1% |
-| **lua** | 12m | 🟦🟦🟦⬜⬜⬜⬜⬜⬜⬜ 33.9% |
+| **ignore** | 2m | 🟦🟦🟦🟦🟦⬜⬜⬜⬜⬜ 50.0% |
+| **javascript** | 2m | 🟦🟦🟦🟦🟦⬜⬜⬜⬜⬜ 50.0% |
 
 #### 🔥 Projects
 | Project | Time | Percentage |
 | :--- | :--- | :--- |
-| **vscodePlugin** | 23m | 🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜ 66.1% |
-| **plugins** | 12m | 🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜ 33.9% |
+| **Takatime** | 4m | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 100.0% |
 
 
 <!--takatime-end-->
@@ -208,28 +207,27 @@ MIT License. See `LICENSE` for details.
 
 > [!NOTE]
 > **TakaTime Dashboard**
-> _Jan 07_ to _Jan 14_
+> _Jan 10_ to _Jan 17_
 
 > [!TIP]
-> **Total Coding Time (7d):** 0h 35m
+> **Total Coding Time (7d):** 0h 4m
 
 #### 📈 Trends
 | Period        | Duration    | Period       | Duration    |
 | :---          | :---        | :---         | :---        |
-| Yesterday     | **0m**      | Last 7 Days  | **35m**     |
-| Last 30 Days  | **4h 18m**  | All Time     | **4h 18m**  |
+| Yesterday     | **4m**      | Last 7 Days  | **4m**      |
+| Last 30 Days  | **4h 22m**  | All Time     | **4h 22m**  |
 
 #### 💻 Languages
 | Language | Time | Percentage |
 | :--- | :--- | :--- |
-| **js** | 23m | 🟦🟦🟦🟦🟦🟦⬜⬜⬜⬜ 66.1% |
-| **lua** | 12m | 🟦🟦🟦⬜⬜⬜⬜⬜⬜⬜ 33.9% |
+| **ignore** | 2m | 🟦🟦🟦🟦🟦⬜⬜⬜⬜⬜ 50.0% |
+| **javascript** | 2m | 🟦🟦🟦🟦🟦⬜⬜⬜⬜⬜ 50.0% |
 
 #### 🔥 Projects
 | Project | Time | Percentage |
 | :--- | :--- | :--- |
-| **vscodePlugin** | 23m | 🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜ 66.1% |
-| **plugins** | 12m | 🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜ 33.9% |
+| **Takatime** | 4m | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 100.0% |
 
 
 <!--takatime-end-->
