@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"flag"
 	"log"
 	"path/filepath"
@@ -30,24 +29,30 @@ func main() {
 		return
 	}
 
+	//setup debugger logs
 	err := debugger.SetupLog()
 
 	if err != nil {
-		// If setup fails, we print to the standard console so the user sees it
-		// We use log.Panic to print the error and crash/exit the app
 		log.Panic("Failed to initialize logger: ", err)
 	}
 
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
-
-	client, err := db.ConnectToDataBase(*uri)
+	var errr error
+	types.DB, errr = db.InitSQLite()
 	if err != nil {
-		log.Fatalln("Counld not connect to mongo db", err)
+		log.Fatal("Could not initialize local DB:", errr)
 	}
+	defer types.DB.Close()
 
-	collection := client.Database("takatime").Collection("logs")
-
+	// ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	// defer cancel()
+	//
+	// client, err := db.ConnectToDataBase(*uri)
+	// if err != nil {
+	// 	log.Fatalln("Counld not connect to mongo db", err)
+	// }
+	//
+	// collection := client.Database("takatime").Collection("logs")
+	//
 	fileDir := filepath.Dir(*file)
 
 	gitBranch, err := utils.GetGitBranch(fileDir)
@@ -68,11 +73,25 @@ func main() {
 		Editor:    *editor,
 	}
 
-	_, err = collection.InsertOne(ctx, entry)
+	// _, err = collection.InsertOne(ctx, entry)
 
-	if err != nil {
-		log.Fatal("Insert Failed:", err)
+	// 6. STEP 1: Always Save to Local DB First (Safety Net)
+	if err := db.Enqueue(entry, types.DB); err != nil {
+		log.Printf("Failed to save offline: %v", err)
+		// If we can't save to disk, we probably shouldn't continue
+		return
+	}
+	log.Printf("Saved log for '%s' to offline queue.", *file)
+
+	// 7. STEP 2: The Sync Loop (Drain the Queue)
+	// We assume *uri is valid here. If empty, we just skip syncing.
+	if *uri != "" {
+		db.SyncQueue(*uri, types.DB)
 	}
 
-	log.Println("Log processed sucessfullty")
+	// if err != nil {
+	// 	log.Fatal("Insert Failed:", err)
+	// }
+	//
+	// log.Println("Log processed sucessfullty")
 }

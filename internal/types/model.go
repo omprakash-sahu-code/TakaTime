@@ -1,6 +1,11 @@
 package types
 
-import "time"
+import (
+	"database/sql"
+	"time"
+)
+
+var DB *sql.DB
 
 type LogEntry struct {
 	FileName  string    `bson:"name"`
