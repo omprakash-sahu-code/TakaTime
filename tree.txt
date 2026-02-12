@@ -1,0 +1,104 @@
+.
+├── CHANGELOG.md
+├── cmd
+│   ├── image
+│   │   ├── FiraCodeNerdFontPropo-Retina.ttf
+│   │   ├── font.ttf
+│   │   ├── main.go
+│   │   └── test-dashboard.png
+│   ├── report
+│   │   ├── FiraCodeNerdFontPropo-Retina.ttf
+│   │   └── main.go
+│   ├── taka-cli
+│   └── upload
+│       └── main.go
+├── CODE_OF_CONDUCT.md
+├── commands
+│   └── importantCommands.txt
+├── CONTRIBUTING.md
+├── go.mod
+├── go.sum
+├── internal
+│   ├── BuildImg
+│   │   ├── Card.go
+│   │   └── StatsImg.go
+│   ├── db
+│   │   ├── addMongo.go
+│   │   ├── localDB.go
+│   │   └── mongo.go
+│   ├── DBQueryV2
+│   │   ├── aggration.go
+│   │   └── migrations.go
+│   ├── debugger
+│   │   └── debug.go
+│   ├── GoGist
+│   │   ├── gist.go
+│   │   ├── Helper.go
+│   │   └── UploadImg.go
+│   ├── types
+│   │   ├── model.go
+│   │   └── themes.go
+│   └── Utils
+│       ├── GetBranch.go
+│       ├── GetOs.go
+│       ├── ReadMeFormater.go
+│       └── UploadFormmater.go
+├── internal.txt
+├── Languages.png
+├── LICENSE
+├── lua
+│   └── taka-time
+│       ├── config.lua
+│       ├── core.lua
+│       ├── init.lua
+│       ├── storage.lua
+│       ├── test
+│       │   └── os_nmae.lua
+│       └── utils.lua
+├── nvim_logs.txt
+├── plugin
+│   └── takatime.lua
+├── Projects.png
+├── public
+│   ├── dashboard-preview-vscode.png
+│   ├── taka-languages.png
+│   ├── taka-projects.png
+│   ├── taka-tech.png
+│   └── taka-time.png
+├── README.md
+├── SECURITY.md
+├── taka-report
+├── taka-upload
+├── taka-upload.exe
+├── Tech Stack.png
+├── Time Stats.png
+├── tree.txt
+└── vscodePlugin
+    └── Takatime
+        ├── CHANGELOG.md
+        ├── eslint.config.mjs
+        ├── extension.js
+        ├── jsconfig.json
+        ├── LICENSE.md
+        ├── package.json
+        ├── package-lock.json
+        ├── Plugin
+        │   ├── BinaryDownload.js
+        │   ├── Config.js
+        │   ├── HeartBeat.js
+        │   ├── InputBox.js
+        │   ├── Setup.js
+        │   ├── StatusBarUpdate.js
+        │   └── Uploader.js
+        ├── public
+        │   └── TakatimeLogo.png
+        ├── README.md
+        ├── takatime-0.0.1.vsix
+        ├── takatime-0.0.2.vsix
+        ├── takatime-0.0.3.vsix
+        ├── takatime-0.0.4.vsix
+        ├── test
+        │   └── extension.test.js
+        └── vsc-extension-quickstart.md
+
+24 directories, 78 files
