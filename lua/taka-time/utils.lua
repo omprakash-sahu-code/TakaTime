@@ -58,6 +58,15 @@ function M.ensure_binary()
 	local bin_path = M.get_binary_path()
 	local target_ver = config.options.binary_version
 	local current_ver = M.get_installed_version()
+	local os_name, arch = get_os_info()
+	if not os_name then
+		print("[Taka] Auto-install not supported for this OS.")
+		return
+	end
+	if os_name == "windows" then
+		arch = arch .. ".exe"
+		bin_path = bin_path .. ".exe"
+	end
 
 	-- 1. Check if we are already up to date
 	if vim.fn.filereadable(bin_path) == 1 and current_ver == target_ver then
@@ -67,16 +76,6 @@ function M.ensure_binary()
 	-- 2. Update logic
 	if current_ver and current_ver ~= target_ver then
 		print(string.format("[Taka] Updating %s -> %s...", current_ver, target_ver))
-	end
-
-	local os_name, arch = get_os_info()
-	if not os_name then
-		print("[Taka] Auto-install not supported for this OS.")
-		return
-	end
-	if os_name == "windows" then
-		arch = arch .. ".exe"
-		bin_path = bin_path .. ".exe"
 	end
 
 	local url = string.format(
