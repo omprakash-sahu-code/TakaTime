@@ -3,7 +3,14 @@ local config = require("taka-time.config")
 
 function M.get_binary_path()
 	local plugin_root = vim.fn.fnamemodify(debug.getinfo(1).source:sub(2), ":h:h:h")
-	return plugin_root .. "/taka-upload"
+	local bin_path = plugin_root .. "/taka-upload"
+
+	local os_name = vim.loop.os_uname().sysname:lower()
+	if string.match(os_name, "windows") ~= nil then
+		bin_path = bin_path .. ".exe"
+	end
+
+	return bin_path
 end
 
 function M.get_version_file_path()
@@ -40,6 +47,8 @@ local function get_os_info()
 		os = "linux"
 	elseif os == "darwin" then
 		os = "darwin"
+	elseif string.match(os, "windows") ~= nil then
+		os = "windows"
 	else
 		return nil, nil
 	end
@@ -72,12 +81,14 @@ function M.ensure_binary()
 		print("[Taka] Auto-install not supported for this OS.")
 		return
 	end
+	local ext = os_name == "windows" and ".exe" or ""
 
 	local url = string.format(
-		"https://github.com/Rtarun3606k/TakaTime/releases/download/%s/taka-upload-%s-%s",
+		"https://github.com/Rtarun3606k/TakaTime/releases/download/%s/taka-upload-%s-%s%s",
 		target_ver,
 		os_name,
-		arch
+		arch,
+		ext
 	)
 
 	-- 3. Delete old binary and download new one
@@ -87,7 +98,9 @@ function M.ensure_binary()
 
 	print("[Taka] Downloading " .. target_ver .. "...")
 	vim.fn.system({ "curl", "-L", "-o", bin_path, url })
-	vim.fn.system({ "chmod", "+x", bin_path })
+	if os_name ~= "windows" then
+		vim.fn.system({ "chmod", "+x", bin_path })
+	end
 
 	-- 4. Update version file
 	M.write_installed_version(target_ver)
