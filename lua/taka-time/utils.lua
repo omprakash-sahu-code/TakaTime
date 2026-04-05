@@ -88,12 +88,14 @@ function M.ensure_binary()
 		print("[Taka] Auto-install not supported for this OS.")
 		return
 	end
+	local ext = os_name == "windows" and ".exe" or ""
 
 	local url = string.format(
-		"https://github.com/Rtarun3606k/TakaTime/releases/download/%s/taka-upload-%s-%s",
+		"https://github.com/Rtarun3606k/TakaTime/releases/download/%s/taka-upload-%s-%s%s",
 		target_ver,
 		os_name,
-		arch
+		arch,
+		ext
 	)
 
 	-- 3. Delete old binary and download new one
@@ -151,8 +153,6 @@ function M.ensure_binary_dashboard()
 	M.write_installed_version(target_ver)
 	print("[Taka] Successfully installed " .. target_ver)
 end
-
-
 
 -----------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------
