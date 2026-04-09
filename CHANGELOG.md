@@ -5,6 +5,26 @@ All notable changes to the **TakaTime** project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2026-04-09
+
+### New Features
+* **Interactive Dashboard:** Introduced a fully responsive, terminal-based dashboard powered by Go and Bubble Tea to view local stats without a browser.
+* **VS Code Dashboard Integration:** Added `TakaTime: Open Dashboard` command and a dedicated quick-access Graph Icon in the editor title menu. The dashboard opens cleanly within the main editor area.
+* **Neovim Dashboard Integration:** Added the `:TakaDash` command to launch the interactive UI in a centered, floating terminal window.
+* **Multi-Binary Auto-Downloader:** The VS Code extension now intelligently downloads and manages multiple required binaries (`taka-upload` and `taka-dashboard`) with a unified progress UI.
+
+###  Architecture & Refactoring
+* **Modularized Go Binaries:** Split the monolithic architecture into purpose-built, lightweight binaries (`taka-upload`, `taka-dashboard`, and `taka-report`) to improve performance, reduce memory footprint, and allow for independent updates.
+* **Decoupled Configuration:** Refactored the internal Node.js extension architecture to isolate the `Uploader`, `Downloader`, `HeartBeat`, and `Config` modules for better maintainability.
+* **Explicit Payload Routing:** Updated the heartbeat spawn process to pass the MongoDB URI directly via command-line flags, improving reliability during background sync.
+
+###  Improvements & Fixes
+* **VS Code UI Optimization:** Adjusted terminal creation logic so the Bubble Tea layout renders perfectly without stretching on ultra-wide monitors.
+* **Status Bar Clarity:** Updated the status bar to reflect the health of *all* required binaries, actively warning users if core files are missing.
+* **Safe Process Spawning:** Enhanced the background Go process to ensure it detaches cleanly from VS Code, preventing zombie processes or editor lag.
+
+---
+
 ## [2.1.0] - 2026-02-12
 
 ### Added
@@ -31,8 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic image generation for Languages and Projects.
 - MongoDB connection logic.
 
-
-
+---
 
 ## [2.0.5] - 2026-01-26
 ### Added
@@ -47,6 +66,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - **Directory Safety:** The logger now automatically creates the `.takatime` directory if missing, preventing startup crashes on fresh installs.
 
+---
+
 ## [2.0.3-beta]
 ### Added
 - **Interactive Setup:** Added `:TakaInit` command for secure, interactive configuration.
@@ -59,6 +80,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - **CI Workflow:** Updated release workflow to correctly build and upload the `taka-report` binary (fixes "asset not found" errors).
 - **UI UX:** Silenced "Syncing..." messages by default (controlled via `debug=false` config).
+
+---
 
 ## [1.0.1] - The "Foundation" Release
 ### Added
