@@ -26,6 +26,10 @@
   <a href="https://marketplace.visualstudio.com/items?itemName=Rtarun3606k.takatime">
     <img src="https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white" alt="VS Code">
   </a>
+  <a href="https://github.com/Rtarun3606k/TakaTime">
+  <!-- <img src="https://img.shields.io/badge/Antigravity-000000?style=for-the-badge&logo=rocket&logoColor=white" alt="Antigravity"> -->
+    <img src="https://img.shields.io/badge/Antigravity-111111?style=for-the-badge&logo=rocket&logoColor=00E5FF">
+</a>
 
   <br>
 
@@ -175,6 +179,7 @@ return {
 ---
 
 ### Using Antigravity
+https://github.com/user-attachments/assets/da108968-c204-486b-9969-bf5ff24b0835
 
 
 ###  How to Install Manually (Using `.vsix`)
