@@ -83,7 +83,7 @@ TakaTime includes a fully interactive, offline-first terminal dashboard directly
 
 ---
 
-## 🛠️ Editor Compatibility 
+##  Editor Compatibility 
 
 TakaTime is cross-platform and editor-agnostic. All plugins share the same core Go binaries for a consistent experience.
 
