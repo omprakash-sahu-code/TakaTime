@@ -1,6 +1,8 @@
 <div align="center">
 
-  <img width="120" alt="TakatimeLogo" src="https://github.com/user-attachments/assets/09cf911b-5246-4b13-99e7-7f435a6cde3a" />
+ 
+<img width="350" height="200" alt="background-removed(1)" src="https://github.com/user-attachments/assets/064b9837-1ff6-439c-b18a-88049b218ee8" />
+
 
   # TakaTime
 
