@@ -93,10 +93,15 @@ Tired of manually configuring command-line flags? Use the **[Interactive TakaTim
 TakaTime includes a fully interactive, offline-first terminal dashboard directly inside your editor. View your coding stats, language breakdowns, and project times without ever leaving your workflow or opening a browser.
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/a15288c7-95b2-49f2-8d50-200b087af36c" width="49%" alt="VS Code Dashboard" />
+  <!-- <img src="https://github.com/user-attachments/assets/a15288c7-95b2-49f2-8d50-200b087af36c" width="49%" alt="VS Code Dashboard" />
   <img src="https://github.com/user-attachments/assets/5f53508c-4659-46e6-a0ab-ba5d9d537ed4" width="49%" alt="Neovim Dashboard" />
-  <p><em>TakaTime Dashboard running locally in Neovim (left) and VS Code (right)</em></p>
+  <p><em>TakaTime Dashboard running locally in Neovim (left) and VS Code (right)</em></p> -->
+ 
+
+<img width="1080" height="608" alt="output" src="https://github.com/user-attachments/assets/2179e786-ee06-4fea-b845-53759abb60a1" />
+
 </div>
+
 
 ---
 
