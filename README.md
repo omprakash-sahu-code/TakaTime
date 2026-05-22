@@ -1,7 +1,8 @@
 <div align="center">
 
  
-<img width="350" height="200" alt="background-removed(1)" src="https://github.com/user-attachments/assets/064b9837-1ff6-439c-b18a-88049b218ee8" />
+<!-- <img width="350" height="200" alt="background-removed(1)" src="https://github.com/user-attachments/assets/83f584a2-1e31-482b-8b53-9931c8ae1ac0" /> -->
+<img width="227" height="227" alt="takatime" src="https://github.com/user-attachments/assets/83f584a2-1e31-482b-8b53-9931c8ae1ac0" />
 
 
   # TakaTime
@@ -120,10 +121,12 @@ TakaTime is cross-platform and editor-agnostic. All plugins share the same core 
     <th>Neovim</th>
     <th>VS Code</th>
     <th>Antigravity</th>
+    <th>JetBrains</th>
     <th>OS Support</th>
   </tr>
   <tr>
     <td><b>Background Sync</b></td>
+    <td>✓ Supported</td>
     <td>✓ Supported</td>
     <td>✓ Supported</td>
     <td>✓ Supported</td>
@@ -134,10 +137,12 @@ TakaTime is cross-platform and editor-agnostic. All plugins share the same core 
     <td>✓ Supported</td>
     <td>✓ Supported</td>
     <td>✓ Supported</td>
+    <td>✓ Supported</td>
     <td>Win, Mac, Linux</td>
   </tr>
   <tr>
     <td><b>Profile Stats</b></td>
+    <td>✓ Supported</td>
     <td>✓ Supported</td>
     <td>✓ Supported</td>
     <td>✓ Supported</td>
@@ -146,6 +151,7 @@ TakaTime is cross-platform and editor-agnostic. All plugins share the same core 
   <tr>
     <td><b>Privacy Controls</b></td>
     <td>✓ Supported</td>
+    <td>⚙ Planned</td>
     <td>⚙ Planned</td>
     <td>⚙ Planned</td>
     <td>All OS</td>
