@@ -114,6 +114,10 @@ TakaTime includes a fully interactive, offline-first terminal dashboard directly
 
 ---
 
+##  Themes
+
+TakaTime includes 18 built-in color themes. Browse the full visual gallery — including Terminal Dashboard and Web Generator previews for each theme — in **[THEMES.md](./THEMES.md)**.
+
 ##  Editor Compatibility 
 
 TakaTime is cross-platform and editor-agnostic. All plugins share the same core Go binaries for a consistent experience.
