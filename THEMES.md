@@ -1,4 +1,4 @@
-# 🎨 TakaTime Theme Gallery
+#  TakaTime Theme Gallery
 
 A visual reference for all built-in TakaTime color themes. Use the theme name/ID in your command or workflow to apply it.
 
@@ -36,7 +36,7 @@ A visual reference for all built-in TakaTime color themes. Use the theme name/ID
 
 | Stat Card Preview | Terminal Dashboard |
 |:-:|:-:|
-| ![Dark theme stat card](./public/dark-web.png) | ![Dark theme TUI](./public/dark-tui.png) |
+| ![Dark theme stat card](./public/dark-web.png) | ![Dark theme TUI](https://github.com/user-attachments/assets/bf5546c1-bd06-485a-b7f2-2486348abc2a) |
 
 ---
 
@@ -46,7 +46,7 @@ A visual reference for all built-in TakaTime color themes. Use the theme name/ID
 
 | Stat Card Preview | Terminal Dashboard |
 |:-:|:-:|
-| ![Light theme stat card](./public/light-web.png) | ![Light theme TUI](./public/light-tui.png) |
+| ![Light theme stat card](./public/light-web.png) | ![Light theme TUI](https://github.com/user-attachments/assets/5cd5b4a4-f6dd-41e8-85f5-562fdd779261) |
 
 ---
 
@@ -56,7 +56,7 @@ A visual reference for all built-in TakaTime color themes. Use the theme name/ID
 
 | Stat Card Preview | Terminal Dashboard |
 |:-:|:-:|
-| ![Dracula theme stat card](./public/dracula-web.png) | ![Dracula theme TUI](./public/dracula-tui.png) |
+| ![Dracula theme stat card](https://github.com/user-attachments/assets/e8983a0b-536a-4d00-af20-4a2a8149abbc) | ![Dracula theme TUI](https://github.com/user-attachments/assets/4ca6b269-ab7f-4d44-9a1b-1ceeb96e4965) |
 
 ---
 
@@ -66,7 +66,7 @@ A visual reference for all built-in TakaTime color themes. Use the theme name/ID
 
 | Stat Card Preview | Terminal Dashboard |
 |:-:|:-:|
-| ![Monokai theme stat card](./public/monokai-web.png) | ![Monokai theme TUI](./public/monokai-tui.png) |
+| ![Monokai theme stat card](https://github.com/user-attachments/assets/b23b2cc2-3061-4d72-b810-b8605231c514) | ![Monokai theme TUI](https://github.com/user-attachments/assets/48198c68-3484-4c29-be5d-1abe6542e164) |
 
 ---
 
@@ -76,7 +76,7 @@ A visual reference for all built-in TakaTime color themes. Use the theme name/ID
 
 | Stat Card Preview | Terminal Dashboard |
 |:-:|:-:|
-| ![Cyberpunk theme stat card](./public/cyberpunk-web.png) | ![Cyberpunk theme TUI](./public/cyberpunk-tui.png) |
+| ![Cyberpunk theme stat card](https://github.com/user-attachments/assets/e36910d9-4faf-425f-ac22-c7a614ebf97f)) | ![Cyberpunk theme TUI](https://github.com/user-attachments/assets/84a28940-ebf7-4bb7-a746-06e241aa0a4c) |
 
 ---
 
@@ -86,7 +86,7 @@ A visual reference for all built-in TakaTime color themes. Use the theme name/ID
 
 | Stat Card Preview | Terminal Dashboard |
 |:-:|:-:|
-| ![Tokyo Night theme stat card](./public/tokyonight-web.png) | ![Tokyo Night theme TUI](./public/tokyonight-tui.png) |
+| ![Tokyo Night theme stat card](https://github.com/user-attachments/assets/ac92d1bc-e39a-4815-baf0-cfe4abd5e3eb) | ![Tokyo Night theme TUI](https://github.com/user-attachments/assets/4370833e-5eb0-4889-b76e-352a510af9d9) |
 
 ---
 
@@ -96,7 +96,7 @@ A visual reference for all built-in TakaTime color themes. Use the theme name/ID
 
 | Stat Card Preview | Terminal Dashboard |
 |:-:|:-:|
-| ![Catppuccin theme stat card](./public/catppuccin-web.png) | ![Catppuccin theme TUI](./public/catppuccin-tui.png) |
+| ![Catppuccin theme stat card](https://github.com/user-attachments/assets/48f41cf4-b3dd-4019-a5cc-c58ef0cec89d) | ![Catppuccin theme TUI](https://github.com/user-attachments/assets/9272768d-47c6-4e60-81ce-7da2761fdae1) |
 
 ---
 
@@ -106,7 +106,7 @@ A visual reference for all built-in TakaTime color themes. Use the theme name/ID
 
 | Stat Card Preview | Terminal Dashboard |
 |:-:|:-:|
-| ![Synthwave theme stat card](./public/synthwave-web.png) | ![Synthwave theme TUI](./public/synthwave-tui.png) |
+| ![Synthwave theme stat card](https://github.com/user-attachments/assets/63154830-2c94-447a-95d1-623c9edb494b) | ![Synthwave theme TUI](https://github.com/user-attachments/assets/306de53d-2d73-431a-a6b1-9299e112119d) |
 
 ---
 
@@ -121,7 +121,7 @@ A visual reference for all built-in TakaTime color themes. Use the theme name/ID
 
 | Stat Card Preview | Terminal Dashboard |
 |:-:|:-:|
-| ![Sunset theme stat card](./public/sunset-web.png) | ![Sunset theme TUI](./public/sunset-tui.png) |
+| ![Sunset theme stat card](https://github.com/user-attachments/assets/bdc1891b-156e-45c8-9f47-d3daace8c05e) | ![Sunset theme TUI](https://github.com/user-attachments/assets/ffe75bda-2fb9-4664-b80a-ce5f71fb1bdd) |
 
 ---
 
@@ -136,7 +136,7 @@ A visual reference for all built-in TakaTime color themes. Use the theme name/ID
 
 | Stat Card Preview | Terminal Dashboard |
 |:-:|:-:|
-| ![Midnight Purple theme stat card](./public/midnightpurple-web.png) | ![Midnight Purple theme TUI](./public/midnightpurple-tui.png) |
+| ![Midnight Purple theme stat card](https://github.com/user-attachments/assets/fc511b15-54ca-42e7-a9b9-f693bdc06113) | ![Midnight Purple theme TUI](https://github.com/user-attachments/assets/d29f344e-e664-44a5-bbc3-76e705f52335) |
 
 ---
 
@@ -164,3 +164,31 @@ Not sure which theme to pick? Use the **[Interactive TakaTime Generator](https:/
 ---
 
 *Generated for [TakaTime](https://github.com/Rtarun3606k/TakaTime) — The Open Source, Self-Hosted WakaTime Alternative.*
+
+
+
+
+
+
+
+
+
+
+
+
+ <img width="1288" height="945" alt="catppuccin-tui" src="" />
+<img width="1232" height="956" alt="tokyonight-tui" src="" />
+<img width="1232" height="969" alt="synthwave-tui" src="" />
+<img width="1232" height="958" alt="midnightpurple-tui" src="" />
+<img width="1232" height="966" alt="sunset-tui" src="" />
+<img width="1261" height="952" alt="monokai-tui" src="" />
+<img width="1232" height="954" alt="dracula-tui" src="" />
+<img width="1288" height="939" alt="light-tui" src="" />
+<img width="1316" height="922" alt="cyberpunk-tui" src="" />
+<img width="1288" height="929" alt="dark-tui" src="" />
+
+
+ 
+
+
+ 
