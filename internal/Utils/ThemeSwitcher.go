@@ -41,6 +41,8 @@ func ThemeSwitcher(themeFlag string) types.ThemeConfig {
 		theme = types.MaterialDarkTheme
 	case "synthwave":
 		theme = types.SynthwaveTheme
+	case "rosepine":
+		theme = types.RosepineTheme
 	default:
 		// Default to Dark if unknown or explicitly "dark"
 		theme = types.DefaultTheme()

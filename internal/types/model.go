@@ -140,5 +140,5 @@ var AvailableThemes = []string{
 	"default", "light", "dracula", "nord", "gruvbox", "monokai",
 	"cyberpunk", "tokyonight", "everforest", "iceberg", "sunset",
 	"deepocean", "midnight", "catppuccin", "solarized", "onedark",
-	"material", "synthwave",
+	"material", "synthwave", "rosepine",
 }

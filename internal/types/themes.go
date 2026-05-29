@@ -205,3 +205,15 @@ var SynthwaveTheme = ThemeConfig{
 	Color3:             "#fede5d", // Yellow
 	Color4:             "#ff5c8a", // Pink/Red
 }
+
+// 🌹 Rosé Pine (Elegant rose/mauve palette)
+var RosepineTheme = ThemeConfig{
+	BackgroundColor:    "#191724", // Base
+	TextColor:          "#e0def4", // Text
+	SubTextColor:       "#908caa", // Subtle
+	BarBackgroundColor: "#1f1d2e", // Surface
+	Color1:             "#eb6f92", // Love (rose-red)
+	Color2:             "#f6c177", // Gold (warm amber)
+	Color3:             "#ebbcba", // Rose (dusty rose)
+	Color4:             "#31748f", // Pine (teal)
+}
