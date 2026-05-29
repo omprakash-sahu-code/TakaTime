@@ -65,28 +65,40 @@ Press `F5` inside VS Code to launch the Extension Development Host.
 
 ---
 
-# Neovim Plugin
+# Neovim Plugin (LazyVim)
+
+This plugin is configured using the **LazyVim framework**.
 
 ## Requirements
 
-* Neovim >= 0.9 recommended
+- Neovim >= 0.9 recommended
 
-## Example Setup
+## Installation
+
+Add the plugin to your Lazy.nvim configuration:
 
 ```lua
-require("taka-time").setup({
-  debounce_seconds = 2,
-  debug = false,
-})
+return {
+  "Rtarun3606k/TakaTime",
+  lazy = false,
+  config = function()
+    -- Optional: enable debug mode if needed
+    require("taka-time").setup({
+      debug = false
+    })
+  end,
+}
 ```
 
-## Initial Configuration
+## Initial Setup
+
+After installation, run:
 
 ```vim
 :TakaInit
 ```
 
-Run `:TakaInit` inside Neovim to configure the MongoDB connection URI.
+This will prompt you to enter your MongoDB URI securely.
 
 ## Available Commands
 
