@@ -294,6 +294,7 @@ Object.values(inputs).forEach((input) => {
 
 copyBtn.addEventListener("click", () => {
   navigator.clipboard.writeText(output.value);
+
   const orig = copyBtnText.innerText;
   copyBtnText.innerText = "Copied! ✨";
   copyBtn.classList.remove("bg-[#238636]", "hover:bg-[#2ea043]");
@@ -303,6 +304,11 @@ copyBtn.addEventListener("click", () => {
     copyBtn.classList.add("bg-[#238636]", "hover:bg-[#2ea043]");
     copyBtn.classList.remove("bg-emerald-600", "hover:bg-emerald-500");
   }, 2000);
+
+  // Toast
+  const toast = document.getElementById("toast");
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 3000);
 });
 
 const defaultTheme = {
