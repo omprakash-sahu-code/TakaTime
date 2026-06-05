@@ -179,6 +179,16 @@ const themes = {
     c3: "#fede5d",
     c4: "#ff5c8a",
   },
+  rosepine: {
+    bg: "#191724",
+    text: "#e0def4",
+    subtext: "#908caa",
+    barbg: "#26233a",
+    c1: "#eb6f92",
+    c2: "#f6c177",
+    c3: "#ebbcba",
+    c4: "#31748f",
+  },
 };
 
 const inputs = {

@@ -52,6 +52,7 @@ func main() {
 	if versionFlag {
 		fmt.Println(types.Version)
 		return
+		return
 	}
 	// 2. Initialize the Final 'theme' Variable
 	var theme types.ThemeConfig
@@ -92,6 +93,8 @@ func main() {
 		theme = types.MaterialDarkTheme
 	case "synthwave":
 		theme = types.SynthwaveTheme
+	case "rosepine":
+		theme = types.RosepineTheme
 	default:
 		// Default to Dark if unknown or explicitly "dark"
 		theme = types.DefaultTheme()
@@ -141,8 +144,10 @@ func main() {
 
 	client, err := db.ConnectToDataBase(mongoURI)
 	if err != nil {
-		log.Fatal(err)
+		log.Printf("error in connecting to database : %v", err)
+		return
 	}
+
 	defer client.Disconnect(context.TODO())
 
 	if gistToken != "" && targetRepo != "" {
