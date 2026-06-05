@@ -191,7 +191,7 @@ func main() {
 			return buildimg.DrawListCard("Top Projects - Last 30 Days", projects30, fontData, time.Now(), theme, true)
 		})
 
-		// Job 7: Projects
+		// Job 7: heatmap generation
 		utils.HandleImageJob("Heatmap", "public/taka-heatmap.png", gistToken, targetRepo, func() (image.Image, error) {
 			return buildimg.HeatmapStatsImg(dailyHistory, 800, fontData, theme, 2.0)
 		})
