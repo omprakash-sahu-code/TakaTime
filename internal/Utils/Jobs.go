@@ -21,6 +21,8 @@ func HandleImageJob(name, path, token, repo string, generator func() (image.Imag
 		log.Printf("Gen Error (%s): %v\n", name, err)
 		return
 	}
+
+	//debugging image generation
 	// SaveImage(name+".png", img)
 
 	// 2. Format Config (Using your utils package)
