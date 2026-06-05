@@ -16,7 +16,9 @@ type dataLoadedMsg struct {
 	FromCache    bool
 }
 
-func fetchData(uri string) tea.Cmd {
+// fetchData loads dashboard data asynchronously, resolving the active theme from
+// SQLite config when available and falling back to fallbackTheme (the --theme flag value).
+func fetchData(uri string, fallbackTheme types.ThemeConfig) tea.Cmd {
 	return func() tea.Msg {
 		// Initialize SQLite connection
 		sqliteDB, err := db.InitSQLite()
@@ -26,17 +28,16 @@ func fetchData(uri string) tea.Cmd {
 		}
 		defer sqliteDB.Close()
 
-		// 👉 NEW 1: Load the Config and Compile the Styles
-		var loadedStyles Styles.AppStyles
-		userConfig, err := db.LoadConfig(sqliteDB)
-
-		if err == nil && userConfig.Theme != "" {
-			// We found a saved theme! Compile it.
-			loadedStyles = Styles.BuildStyles(utils.ThemeSwitcher(userConfig.Theme))
+		// Resolve the active theme: prefer the saved SQLite config, fall back to
+		// the theme provided via the --theme flag.
+		var activeTheme types.ThemeConfig
+		userConfig, configErr := db.LoadConfig(sqliteDB)
+		if configErr == nil && userConfig.Theme != "" {
+			activeTheme = utils.ThemeSwitcher(userConfig.Theme)
 		} else {
-			// No saved config yet? Default to sunset!
-			loadedStyles = Styles.BuildStyles(utils.ThemeSwitcher("sunset"))
+			activeTheme = fallbackTheme
 		}
+		loadedStyles := Styles.BuildStyles(activeTheme)
 
 		// Check Cache First
 		cachedData, err := db.GetDashboardCache(sqliteDB)
@@ -59,7 +60,7 @@ func fetchData(uri string) tea.Cmd {
 		}
 
 		// Cache MISS! Fetch fresh from MongoDB
-		tempModel := Model{}
+		tempModel := Model{TUITheme: activeTheme}
 		filledModel, _, err := tempModel.GetData(uri)
 
 		// 👉 NEW 3: Attach styles to the Cache MISS model before returning it
@@ -222,17 +223,25 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 					sqliteDB.Close()
 				}
 
-				// 3. Rebuild the AppStyles locally using the new colors
+				// 3. Rebuild the AppStyles locally using the new colors and persist the
+			// selected theme so GetData uses it for stat bar colors.
 				m.AppStyles = Styles.BuildStyles(newThemeConfig)
+				m.TUITheme = newThemeConfig
 				m.ShowSettings = false
 
-				// 4. Force the viewport to redraw with the new colors!
+				// 4. Clear stale cache so the next fetch re-colors bars with the new theme.
+				if sqliteDB2, err2 := db.InitSQLite(); err2 == nil {
+					db.ClearDashboardCache(sqliteDB2)
+					sqliteDB2.Close()
+				}
+
+				// 5. Force the viewport to redraw with the new colors!
 				if m.Ready {
 					m.updateViewport()
 				}
 			}
 			m.Loading = true
-			return m, fetchData(m.MongoURI)
+			return m, fetchData(m.MongoURI, m.TUITheme)
 		}
 
 		switch msg.String() {
@@ -240,7 +249,7 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			return m, tea.Quit
 		case "r":
 			m.Loading = true
-			return m, fetchData(m.MongoURI)
+			return m, fetchData(m.MongoURI, m.TUITheme)
 
 		case "m":
 			// Toggle the boolean (True becomes False, False becomes True)
