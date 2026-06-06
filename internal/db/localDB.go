@@ -161,6 +161,12 @@ func SaveDashboardCache(db *sql.DB, data types.CacheData) error {
 	return err
 }
 
+// ClearDashboardCache deletes the cached dashboard data, forcing a fresh fetch
+func ClearDashboardCache(db *sql.DB) error {
+	_, err := db.Exec("DELETE FROM dashboard_cache WHERE id = 'main'")
+	return err
+}
+
 // GetDashboardCache checks if data exists and is less than 5 minutes old
 func GetDashboardCache(db *sql.DB) (*types.CacheData, error) {
 	var rawJSON string

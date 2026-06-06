@@ -7,7 +7,6 @@ import (
 
 	dbqueryv2 "github.com/Rtarun3606k/TakaTime/internal/DBQueryV2"
 	"github.com/Rtarun3606k/TakaTime/internal/db"
-	"github.com/Rtarun3606k/TakaTime/internal/types"
 	"go.mongodb.org/mongo-driver/v2/mongo"
 )
 
@@ -21,7 +20,7 @@ func (m Model) GetData(URI string) (Model, *mongo.Client, error) {
 	}
 
 	for _, value := range labels {
-		data, err := dbqueryv2.GetListStats(Client, value, 30, types.CatppuccinTheme, 0)
+		data, err := dbqueryv2.GetListStats(Client, value, 30, m.TUITheme, 0)
 		if err != nil {
 			log.Println("Failed to fetch stats for", value, ":", err)
 			return m, nil, err

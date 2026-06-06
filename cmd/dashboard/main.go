@@ -39,7 +39,7 @@ func (m Model) Init() tea.Cmd {
 		return m.Spinner.Tick
 	}
 	// Start spinning the spinner and tell Bubble Tea to fetch data in the background!
-	return tea.Batch(m.Spinner.Tick, fetchData(m.MongoURI))
+	return tea.Batch(m.Spinner.Tick, fetchData(m.MongoURI, m.TUITheme))
 }
 
 func main() {
