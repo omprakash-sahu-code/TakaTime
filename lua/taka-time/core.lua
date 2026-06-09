@@ -125,6 +125,12 @@ function M.setup_listeners()
 			attempt_upload()
 		end,
 	})
+
+	-- On Exit, flush any remaining data
+	vim.api.nvim_create_autocmd("VimLeavePre", {
+		group = group,
+		callback = M.on_exit,
+	})
 end
 
 -------------------------------------------------------------------------------------
