@@ -164,7 +164,6 @@ end
 
 -- Helper: Check if the current directory is inside an ignored repository
 function M.is_ignored(current_dir)
-	local config = require("taka-time.config")
 	local ignore_list = config.options.ignore_repos or {}
 
 	-- Add a slash to the current directory for safe comparison
