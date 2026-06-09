@@ -1,5 +1,6 @@
 local M = {}
 local config = require("taka-time.config")
+local uv = vim.uv or vim.loop
 
 ---@enum BinaryEnum
 M.BinaryEnum = {
@@ -11,7 +12,7 @@ function M.get_binary_path(binary)
 	local plugin_root = vim.fn.fnamemodify(debug.getinfo(1).source:sub(2), ":h:h:h")
 	local bin_path = plugin_root .. "/" .. binary
 
-	local os_name = vim.loop.os_uname().sysname:lower()
+	local os_name = uv.os_uname().sysname:lower()
 	if string.match(os_name, "windows") ~= nil then
 		bin_path = bin_path .. ".exe"
 	end
@@ -71,7 +72,7 @@ end
 
 -- Helper: Detect OS/Arch
 local function get_os_info()
-	local uname = vim.loop.os_uname()
+	local uname = uv.os_uname()
 	local os = uname.sysname:lower()
 	local arch = uname.machine:lower()
 	if os == "linux" then
@@ -146,7 +147,7 @@ end
 -----------------------------------------------------------------------------------------
 
 function M.get_os()
-	local os_name = vim.loop.os_uname().sysname
+	local os_name = uv.os_uname().sysname
 
 	print(os_name, " os name")
 	return os_name

@@ -1,6 +1,7 @@
 local M = {}
 local config = require("taka-time.config")
 local utils = require("taka-time.utils")
+local uv = vim.uv or vim.loop
 
 -- STATE
 local state = {
@@ -179,7 +180,7 @@ function M.start_timer()
 		state.timer = nil
 	end
 
-	state.timer = vim.loop.new_timer()
+	state.timer = uv.new_timer()
 	state.timer:start(
 		1000, -- Wait 1s
 		60000, -- Repeat every 60s
