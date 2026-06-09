@@ -80,7 +80,17 @@ local function attempt_upload()
 			end
 		end,
 	})
+
+	-- jobstart returns 0 or -1 on failure; on_exit won't fire in that case
+	if state.job_id <= 0 then
+		state.job_id = 0
+		state.pending_duration = state.pending_duration + time_to_send
+		if config.options.debug then
+			print("[Taka] Failed to start upload process.")
+		end
+	end
 end
+
 
 -----------------------------------------------------------------------------------
 --  THE FIX: Only add time if activity happened recently
