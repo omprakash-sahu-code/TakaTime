@@ -7,6 +7,7 @@ local state = {
 	last_event_time = os.time(), -- When was the last keystroke?
 	pending_duration = 0, -- Accumulated seconds to send
 	job_id = 0,
+	timer = nil, -- Background sync timer handle
 }
 
 -- TIMEOUT: If no activity for 2 mins, don't count that time gap.
@@ -118,6 +119,13 @@ end
 -------------------------------------------------------------------------------------
 -- Public: Called on Exit
 function M.on_exit()
+	-- Stop the background sync timer
+	if state.timer then
+		state.timer:stop()
+		state.timer:close()
+		state.timer = nil
+	end
+
 	-- 1. Snapshot the time immediately
 	local time_to_send = state.pending_duration
 
@@ -164,8 +172,15 @@ function M.on_exit()
 end
 
 function M.start_timer()
-	local timer = vim.loop.new_timer()
-	timer:start(
+	-- Stop any previously running timer to prevent duplicates on re-setup
+	if state.timer then
+		state.timer:stop()
+		state.timer:close()
+		state.timer = nil
+	end
+
+	state.timer = vim.loop.new_timer()
+	state.timer:start(
 		1000, -- Wait 1s
 		60000, -- Repeat every 60s
 		vim.schedule_wrap(function()
