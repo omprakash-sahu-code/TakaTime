@@ -58,5 +58,3 @@ func TestHandleImageJobGeneratorError(t *testing.T) {
 		t.Fatal("generator function was not called")
 	}
 }
-
-
