@@ -134,14 +134,18 @@ function M.setup_listeners()
 end
 
 -------------------------------------------------------------------------------------
--- Public: Called on Exit
-function M.on_exit()
-	-- Stop the background sync timer
+function M.clear_timer()
 	if state.timer then
 		state.timer:stop()
 		state.timer:close()
 		state.timer = nil
 	end
+end
+
+-- Public: Called on Exit
+function M.on_exit()
+	-- Stop the background sync timer
+	M.clear_timer()
 
 	-- 1. Snapshot the time immediately
 	local time_to_send = state.pending_duration
@@ -190,11 +194,7 @@ end
 
 function M.start_timer()
 	-- Stop any previously running timer to prevent duplicates on re-setup
-	if state.timer then
-		state.timer:stop()
-		state.timer:close()
-		state.timer = nil
-	end
+	M.clear_timer()
 
 	state.timer = uv.new_timer()
 	state.timer:start(
